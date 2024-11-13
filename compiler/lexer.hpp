@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 #include "token.hpp"
 
@@ -6,6 +7,8 @@ class Lexer
 {
 public:
     Lexer(const std::string& src);
+
+    // Tokenize the source code and return a list of tokens
     std::vector<Token> lexerize();
 
 private:
