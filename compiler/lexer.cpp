@@ -16,12 +16,16 @@ std::vector<Token> Lexer::lexerize()
             currentIndex++;
         }
 
+        else if (currentChar == '"') {
+            tokens.push_back(Token(TokenType::STRING_CONSTANT, readString()));
+        }
+
         else if (std::isalpha(currentChar)) {
             tokens.push_back(Token(TokenType::IDENTIFIER, readIdentifier()));
         }
 
         else if (std::isdigit(currentChar)) {
-            tokens.push_back(Token(TokenType::INTEGER, readInteger()));
+            tokens.push_back(Token(TokenType::INTEGER_CONSTANT, readInteger()));
         }
 
         else if (currentChar == '=') {
@@ -61,4 +65,15 @@ std::string Lexer::readInteger()
         currentIndex++;
     }
     return source.substr(start, currentIndex - start);
+}
+
+
+std::string Lexer::readString()
+{
+    size_t start = ++currentIndex;
+    while (currentIndex < source.size() && source[currentIndex] != '"') {
+        currentIndex++;
+    }
+    currentIndex++;
+    return source.substr(start, currentIndex - start - 1);
 }

@@ -18,6 +18,9 @@ private:
     // Get the integer at `currentIndex` and move `currentIndex` by the length of the integer
     std::string readInteger();
 
+    // Get the string at `currentIndex` and move `currentIndex` by the length of the integer
+    std::string readString();
+
     std::string source;
     const size_t sourceSize;
     size_t currentIndex = 0;

@@ -6,8 +6,9 @@ enum class TokenType
 {
     IDENTIFIER,
     ASSIGNMENT,
-    INTEGER,
-    OPERATOR
+    OPERATOR,
+    INTEGER_CONSTANT,
+    STRING_CONSTANT
 };
 
 
