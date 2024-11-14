@@ -14,8 +14,8 @@ enum class TokenType
 
 struct Token
 {
-    Token(TokenType t, const std::string& v) : type(t), identifier(v) {}
+    Token(TokenType t, const std::string& v) : type(t), value(v) {}
 
     TokenType type;
-    const std::string identifier;
+    const std::string value;
 };

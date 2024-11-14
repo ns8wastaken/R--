@@ -1,23 +1,24 @@
-#include <memory>
-#include <vector>
+#pragma once
 #include <string>
+#include <vector>
+#include <memory>
 
 
 enum class ASTNodeType
 {
     ASSIGNMENT,
-    IDENTIFIER,
-    OPERATOR,
-    INTEGER_CONSTANT,
-    STRING_CONSTANT
+    BINARY_OP,
+    INTEGER,
+    IDENTIFIER
 };
 
 
 struct ASTNode
 {
     ASTNodeType type;
-    std::string value;
-    std::vector<std::shared_ptr<ASTNode>> children;
+    std::string value; // For identifiers or integer literals
+    std::unique_ptr<ASTNode> left;
+    std::unique_ptr<ASTNode> right;
 
-    ASTNode(ASTNodeType t, const std::string& v) : type(t), value(v) {}
+    ASTNode(ASTNodeType nodeType, std::string val = "") : type(nodeType), value(std::move(val)) {}
 };
